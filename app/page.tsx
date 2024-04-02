@@ -3,9 +3,6 @@ import styles from "./page.module.css";
 import localfont from "next/font/local"
 
 
-import {LoginLink} from "@kinde-oss/kinde-auth-nextjs/components";
-
-
 const futura = localfont({
   src: [{
     path : "../public/fonts/futura/FuturaNewBook-Reg.ttf",
@@ -113,7 +110,7 @@ export default function Home() {
           </a>
         </div>
         <div>
-         <LoginLink>Sign up</LoginLink>
+  
         </div>
       </main>
     </>
