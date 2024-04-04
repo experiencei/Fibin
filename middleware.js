@@ -1,19 +1,21 @@
 import { NextResponse } from 'next/server'
+import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
  
 // This function can be marked `async` if using `await` inside
-export function middleware(request) {
-  return NextResponse.redirect(new URL('/home', request.url))
+export  async function middleware(request) {
+  const {isAuthenticated}=getKindeServerSession();
+  if(!(await isAuthenticated())) {
+  return NextResponse.redirect(new URL('/api/auth/login?post_login_redirect_url=/', request.url))
+}
 }
  
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/about/:path*',
+  matcher: ['api/webhook/paystack/:path*', 'api/webhook/flutterwave/:path*']
 }
 
 
 
-// import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
-// import { NextResponse } from 'next/server'
  
 // // This function can be marked `async` if using `await` inside
 // export async function middleware(request) {

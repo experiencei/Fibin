@@ -2,14 +2,15 @@ import type { Metadata } from 'next'
 import "./globals.css";
 import localfont from "next/font/local"
 
-// const futura = localfont({
-//   src: [{
-//     path : "../public/fonts/futura/FuturaNewBook-Reg.woff2",
-//     weight: "700"
-//   },
-// ],
-// variable : "--font-futura",
-// });
+const futura = localfont({
+  src: [{
+    path : "../public/fonts/futura/FuturaNewBook-Reg.ttf",
+    weight: "700"
+  },
+],
+variable : "--font-futura",
+});
+
 
 export const metadata: Metadata = {
   title: 'Fibin',
@@ -26,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" >
-      <body>{children}</body> 
+      <body className={`${futura.variable}`}>{children}</body> 
     </html>
   )
 }
